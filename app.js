@@ -27,16 +27,17 @@ app.get("/access_token", (req, res) => {
   //     });
   let url =
     "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
-//   let auth = Buffer(
-//     "CH7CjKtxwa62bqk4AMmAFPMW17rsPT9e:zgzZMnK1KD3VtuPB"
-//   ).toString("base64");
+  let auth = new Buffer.from(
+    "CH7CjKtxwa62bqk4AMmAFPMW17rsPT9e:zgzZMnK1KD3VtuPB"
+  ).toString("base64");
 
   request(
     {
       url: url,
       headers: {
-        Authorization:
-          "Bearer cFJZcjZ6anEwaThMMXp6d1FETUxwWkIzeVBDa2hNc2M6UmYyMkJmWm9nMHFRR2xWOQ==",
+        'Authorization' : 'Basic '+auth
+      //   Authorization:
+      //     `Bearer cFJZcjZ6anEwaThMMXp6d1FETUxwWkIzeVBDa2hNc2M6UmYyMkJmWm9nMHFRR2xWOQ== CH7CjKtxwa62bqk4AMmAFPMW17rsPT9e:zgzZMnK1KD3VtuPB`,
       },
     },
     (error, response, body) => {
