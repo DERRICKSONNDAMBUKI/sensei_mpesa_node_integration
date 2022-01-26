@@ -40,16 +40,16 @@ app.get("/register", access, (req, res) => {
   let auth = "Bearer " + req.access_token;
   request(
     {
-      url: "",
+      url: "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl",
       method: "POST",
       headers: {
         'Authorization':auth
       },
       json:{
         'ShortCode':'174379',
-        'ResponseType':'Complete',
-        'ConfirmationURL':'http://192.168.22.47:801/confirmation',
-        'ValidationURL':'http://192.168.22.47:801/validation_url'
+        'ResponseType':'Completed',
+        'ConfirmationURL':'http://192.168.22.47:8000/confirmation',
+        'ValidationURL':'http://192.168.22.47:8000/validation_url'
       }
     },
     (error, response, body) => {
