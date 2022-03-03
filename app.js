@@ -13,7 +13,7 @@ const access = (req, res, next) => {
   let url =
     "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
   let auth = new Buffer.from(
-    "customer key:customer secret" // yours
+    "CH7CjKtxwa62bqk4AMmAFPMW17rsPT9e:zgzZMnK1KD3VtuPB" // yours
   ).toString("base64");
 
   request(
@@ -35,11 +35,11 @@ const access = (req, res, next) => {
 };
 
 app.get("/register", access, (req, res) => {
-  let url = "";
+  let url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl";
   let auth = "Bearer " + req.access_token;
   request(
     {
-      url: "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl",
+      url: url,
       method: "POST",
       headers: {
         Authorization: auth,
@@ -71,7 +71,7 @@ app.post('/validation',(req,res)=>{
 })
 
 app.get('/simulate',(req,res)=>{
-  let url = ''
+  let url = 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate'
   let auth = 'Bearer'+req.access_token
 
   request(
@@ -82,10 +82,11 @@ app.get('/simulate',(req,res)=>{
         'Authoriazation':auth
       },
       json:{
-        "ShortCode": 600996,
-        "ResponseType": "Completed",
-        "ConfirmationURL": "https://192.168.22.47:8000/confirmation",
-        "ValidationURL": "https://192.168.22.47:8000/validation",
+        "ShortCode": "174379",
+        "CommandID":"customerPayBillOnline",
+        "Amount":"1",
+        "Msisdn":"254708374149",
+        "BillRefNumber":"SenseiApi"
       }
     },
     function (error,response,body) {
