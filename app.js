@@ -60,47 +60,44 @@ app.get("/register", access, (req, res) => {
   );
 });
 
-app.post('/confirmation',(req,res)=>{
-  console.log('..........confirmation..........');
+app.post("/confirmation", (req, res) => {
+  console.log("..........confirmation..........");
   console.log(req.body);
-})
+});
 
-app.post('/validation',(req,res)=>{
-  console.log('..........validation..........');
+app.post("/validation", (req, res) => {
+  console.log("..........validation..........");
   console.log(req.body);
-})
+});
 
-app.get('/simulate',(req,res)=>{
-  let url = 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate'
-  let auth = 'Bearer'+req.access_token
+app.get("/simulate", (req, res) => {
+  let url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate";
+  let auth = "Bearer " + req.access_token;
 
   request(
     {
-      url:url,
-      method:'POST',
-      headers:{
-        'Authoriazation':auth
+      url: url,
+      method: "POST",
+      headers: {
+        Authoriazation: auth,
       },
-      json:{
-        "ShortCode": "174379",
-        "CommandID":"customerPayBillOnline",
-        "Amount":"1",
-        "Msisdn":"254708374149",
-        "BillRefNumber":"SenseiApi"
-      }
+      json: {
+        ShortCode: "174379",
+        CommandID: "CustomerPayBillOnline",
+        Amount: "1",
+        Msisdn: "254708374149",
+        BillRefNumber: "testapi",
+      },
     },
-    function (error,response,body) {
+    (error, response, body) => {
       if (error) {
         console.error(error);
       } else {
-        res.status(200).json(body)
+        res.status(200).json(body);
       }
-      
     }
-  )
-})
-
-
+  );
+});
 
 app.get("/access_token", access, (req, res) => {
   res.status(200).json({ access_token: req.access_token });
