@@ -13,7 +13,7 @@ const access = (req, res, next) => {
   let url =
     "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
   let auth = new Buffer.from(
-    "CH7CjKtxwa62bqk4AMmAFPMW17rsPT9e:zgzZMnK1KD3VtuPB"
+    "customer key:customer secret" // yours
   ).toString("base64");
 
   request(
