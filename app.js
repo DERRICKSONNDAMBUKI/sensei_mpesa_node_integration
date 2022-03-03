@@ -62,12 +62,12 @@ app.get("/register", access, (req, res) => {
 
 app.post("/confirmation", (req, res) => {
   console.log("..........confirmation..........");
-  console.log(req.body);
+  console.log(res.body);
 });
 
 app.post("/validation", (req, res) => {
   console.log("..........validation..........");
-  console.log(req.body);
+  console.log(res.body);
 });
 
 app.get("/simulate", (req, res) => {
