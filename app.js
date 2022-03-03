@@ -8,7 +8,6 @@ app.get("/", (req, res) => {
   res.send("Hello sensei");
 });
 
-
 const access = (req, res, next) => {
   // access token
   let url =
@@ -43,14 +42,14 @@ app.get("/register", access, (req, res) => {
       url: "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl",
       method: "POST",
       headers: {
-        'Authorization':auth
+        Authorization: auth,
       },
-      json:{
-        'ShortCode':'174379',
-        'ResponseType':'Completed',
-        'ConfirmationURL':'http://192.168.22.47:8000/confirmation',
-        'ValidationURL':'http://192.168.22.47:8000/validation_url'
-      }
+      json: {
+        ShortCode: "174379",
+        ResponseType: "Completed",
+        ConfirmationURL: "http://192.168.22.47:8000/confirmation",
+        ValidationURL: "http://192.168.22.47:8000/validation_url",
+      },
     },
     (error, response, body) => {
       if (error) {
@@ -60,7 +59,6 @@ app.get("/register", access, (req, res) => {
     }
   );
 });
-
 
 app.get("/access_token", access, (req, res) => {
   res.status(200).json({ access_token: req.access_token });
