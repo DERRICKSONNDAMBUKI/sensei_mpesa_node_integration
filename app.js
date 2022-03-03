@@ -82,7 +82,10 @@ app.get('/simulate',(req,res)=>{
         'Authoriazation':auth
       },
       json:{
-
+        "ShortCode": 600996,
+        "ResponseType": "Completed",
+        "ConfirmationURL": "https://192.168.22.47:8000/confirmation",
+        "ValidationURL": "https://192.168.22.47:8000/validation",
       }
     },
     function (error,response,body) {
