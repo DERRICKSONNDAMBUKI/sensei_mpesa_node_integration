@@ -79,12 +79,12 @@ app.get("/simulate", (req, res) => {
       url: url,
       method: "POST",
       headers: {
-        Authoriazation: auth,
+        Authorization: auth,
       },
       json: {
         ShortCode: "174379",
         CommandID: "CustomerPayBillOnline",
-        Amount: "1",
+        Amount: "100",
         Msisdn: "254708374149",
         BillRefNumber: "testapi",
       },
